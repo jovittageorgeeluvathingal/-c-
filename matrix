@@ -1,0 +1,286 @@
+#include&lt;stdio.h&gt;
+int a[50][50],b[50][50],c[50][50],i,j,k,row1,col1,row2,col2;
+
+void dispMatrix(int a[50][50],int row,int col){
+for(i=0;i&lt;row;i++){
+for(j=0;j&lt;col;j++){
+printf(&quot;%d\t&quot;,a[i][j]);
+}
+printf(&quot;\n&quot;);
+}
+}
+void addMatrix(){
+//User Input for Matrix 1
+if(row1==row2 &amp;&amp; col1==col2){
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+printf(&quot;Enter the Element for 1st Array a[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}
+}
+//User Input for Matrix 2
+for(i=0;i&lt;row2;i++){
+for(j=0;j&lt;col2;j++){
+printf(&quot;Enter the Element for 2nd Array b[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;b[i][j]);
+}
+}//Matrix A printing
+printf(&quot;----------Matrix A-----------\n&quot;);
+dispMatrix(a,row1,col1);
+//Matrix B printing
+printf(&quot;----------Matrix B-----------\n&quot;);
+dispMatrix(b,row2,col2);
+
+printf(&quot;----------Matrix Addition-----------\n&quot;);
+//Addition Step and Printing
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+c[i][j]=a[i][j]+b[i][j];
+printf(&quot;%d\t&quot;,c[i][j]);
+}
+printf(&quot;\n&quot;);
+}
+
+}
+else{
+printf(&quot;Matrix Addition not possible&quot;);
+}
+}
+void subMatrix(){
+//User Input for Array 1
+if(row1==row2 &amp;&amp; col1==col2){
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+printf(&quot;Enter the Element for 1st Array a[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}
+}
+//User Input for Array 2
+for(i=0;i&lt;row2;i++){
+for(j=0;j&lt;col2;j++){
+printf(&quot;Enter the Element for 2nd Array b[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;b[i][j]);
+}
+}
+//Matrix A printing
+printf(&quot;----------Matrix A-----------\n&quot;);
+dispMatrix(a,row1,col1);
+//Matrix B printing
+printf(&quot;----------Matrix B-----------\n&quot;);
+dispMatrix(b,row2,col2);
+printf(&quot;----------Subtracted Matrix-----------\n&quot;);
+//Subtraction Step and disp
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+c[i][j]=a[i][j]-b[i][j];
+printf(&quot;%d\t&quot;,c[i][j]);
+}
+printf(&quot;\n&quot;);
+}
+
+}
+else{
+printf(&quot;Matrix Subtraction not possible&quot;);
+}
+}
+void mulMatrix(){
+if(col1==row2){
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+printf(&quot;Enter the Element for 1st Array a[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}}
+//User Input for Array 2
+for(i=0;i&lt;row2;i++){
+for(j=0;j&lt;col2;j++){
+printf(&quot;Enter the Element for 2nd Array b[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;b[i][j]);
+}
+}
+//Matrix A printing
+printf(&quot;----------Matrix A-----------\n&quot;);
+dispMatrix(a,row1,col1);
+//Matrix B printing
+printf(&quot;----------Matrix B-----------\n&quot;);
+dispMatrix(b,row2,col2);
+printf(&quot;----------Multiplicated Matrix-----------\n&quot;);
+//Multiplication Step and disp
+//To initialize values of C array to Zero
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col2;j++){
+c[i][j]=0;
+}
+}
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col2;j++){
+for(k=0;k&lt;col1;k++){
+c[i][j]+=a[i][k]*b[k][j];
+}
+}
+}
+}
+dispMatrix(c,row1,col2);
+}
+void determinantMatrix(){int det=0;
+if(row1==col1){
+if(row1==2 &amp;&amp; col1==2){
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+printf(&quot;Enter the Element for 1st Array a[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}
+}
+//Matrix A printing
+printf(&quot;----------Matrix A-----------\n&quot;);
+dispMatrix(a,row1,col1);
+printf(&quot;----------Determinant of Matrix-----------\n&quot;);
+det=(a[0][0]*a[1][1])-(a[0][1]*a[1][0]);
+printf(&quot;Determinant of 2*2 matrix is %d\n&quot;,det);
+}
+else if(row1==3 &amp;&amp; col1==3){
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+printf(&quot;Enter the Element for 1st Array a[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}
+}
+//Matrix A printing
+printf(&quot;----------Matrix A-----------\n&quot;);
+dispMatrix(a,row1,col1);
+printf(&quot;----------Determinant of Matrix-----------\n&quot;);
+
+det=a[0][0]*((a[1][1]*a[2][2])-(a[1][2]*a[2][1]))-a[0][1]*((a[1][0]*a[2][2])-
+
+(a[1][2]*a[2][0]))+a[0][2]*((a[1][0]*a[2][1])-(a[2][0]*a[1][1]));
+printf(&quot;Determinant of 3*3 matrix is %d\n&quot;,det);
+}
+}else{
+printf(&quot;Rows and Columns did not match. Determinant not possible! OR Matrix size
+
+&gt; 3\n&quot;);
+}
+}
+
+void transposeMatrix(){
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+printf(&quot;Enter the Element for 1st Array a[%d][%d]&quot;,i,j);
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+}
+}
+int d[col1][row1];
+//Matrix A printing
+printf(&quot;----------Matrix A-----------\n&quot;);
+dispMatrix(a,row1,col1);
+printf(&quot;----------Transpose of Matrix-----------\n&quot;);
+for(i=0;i&lt;row1;i++){
+for(j=0;j&lt;col1;j++){
+d[j][i]=a[i][j];
+}
+}
+for(i=0;i&lt;col1;i++){
+for(j=0;j&lt;row1;j++){
+printf(&quot;%d\t&quot;,d[i][j]);
+}
+printf(&quot;\n&quot;);
+}
+
+}
+void main(){
+int ch;do{
+
+printf(&quot;1.Addition of Matrix\n2.Subtraction of Matrix\n3.Multiplication of
+Matrix\n4.Determinant\n5.Transpose\n6.Exit\nEnter Your Choice:&quot;);
+scanf(&quot;%d&quot;,&amp;ch);
+switch(ch){
+case 1:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
+printf(&quot;Enter the Rows of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;row2);
+printf(&quot;Enter the Columns of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;col2);
+addMatrix();
+break;
+case 2:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
+printf(&quot;Enter the Rows of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;row2);
+printf(&quot;Enter the Columns of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;col2);
+subMatrix();
+break;
+case 3:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);do{
+
+printf(&quot;1.Addition of Matrix\n2.Subtraction of Matrix\n3.Multiplication of
+Matrix\n4.Determinant\n5.Transpose\n6.Exit\nEnter Your Choice:&quot;);
+scanf(&quot;%d&quot;,&amp;ch);
+switch(ch){
+case 1:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
+printf(&quot;Enter the Rows of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;row2);
+printf(&quot;Enter the Columns of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;col2);
+addMatrix();
+break;
+case 2:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
+printf(&quot;Enter the Rows of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;row2);
+printf(&quot;Enter the Columns of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;col2);
+subMatrix();
+break;
+case 3:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);do{
+
+printf(&quot;1.Addition of Matrix\n2.Subtraction of Matrix\n3.Multiplication of
+Matrix\n4.Determinant\n5.Transpose\n6.Exit\nEnter Your Choice:&quot;);
+scanf(&quot;%d&quot;,&amp;ch);
+switch(ch){
+case 1:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
+printf(&quot;Enter the Rows of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;row2);
+printf(&quot;Enter the Columns of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;col2);
+addMatrix();
+break;
+case 2:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
+printf(&quot;Enter the Rows of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;row2);
+printf(&quot;Enter the Columns of Array2:&quot;);
+scanf(&quot;%d&quot;,&amp;col2);
+subMatrix();
+break;
+case 3:
+printf(&quot;Enter the Rows of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;row1);
+printf(&quot;Enter the Columns of Array1:&quot;);
+scanf(&quot;%d&quot;,&amp;col1);
