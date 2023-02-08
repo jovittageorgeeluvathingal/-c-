@@ -1,0 +1,140 @@
+#include&lt;stdio.h&gt;
+#define size 3
+int a[size];
+int n=-1;
+void insertArray(){
+int i;
+if(n==size-1){
+printf(&quot;Array is Full&quot;);
+}
+else{
+n=n+1;
+printf(&quot;Enter Element for A[%d]&quot;,n);
+scanf(&quot;%d&quot;,&amp;a[n]);
+printf(&quot;Element Added!\n&quot;);
+}
+}
+int searchArray(int num){
+int i,count=0,p=-1;
+for(i=0;i&lt;size;i++){
+if(a[i]==num){
+printf(&quot;\nElement %d found in Position %d&quot;,num,i+1);
+p=i;
+return p;
+}
+}
+return p;
+}
+void deleteArray(int num,int pos){
+int i;
+for(i=pos;i&lt;size;i++){
+a[i]=a[i+1];
+}
+n=n-1;
+printf(&quot;\nElement %d Deleted&quot;,num);
+}
+void sortArray(){
+int i,j,temp;
+for(i=0;i&lt;=n;i++){
+if(a[i+1]&gt;a[i]){
+temp=a[i];
+a[i]=a[i+1];
+a[i+1]=temp;
+}
+}
+}
+void dispArray(){
+int i;
+if(n==-1){
+printf(&quot;Array is empty&quot;);
+}
+else{
+for(i=0;i&lt;=n;i++){
+printf(&quot;%d\t&quot;,a[i]);
+}
+}
+}
+void main(){
+int ch,num,p,delNum;
+char c;
+do{
+printf(&quot;1.Insert\n2.DisplayArray\n3.SearchArray\n4.DeleteElement\n5.SortArray\nEnter your
+choice:&quot;);
+scanf(&quot;%d&quot;,&amp;ch);
+switch(ch){
+case 1:
+insertArray();
+break;
+case 2:
+dispArray();
+break;
+case 3:
+printf(&quot;Enter the number to be searched:&quot;);
+scanf(&quot;%d&quot;,&amp;num);
+p=searchArray(num);
+if(p==-1){
+printf(&quot;Element Not Found&quot;);
+}
+break;
+case 4:
+printf(&quot;Enter the element to be deleted:&quot;);
+scanf(&quot;%d&quot;,&amp;delNum);
+p=searchArray(delNum);
+if(p==-1){
+printf(&quot;Element Not Found&quot;);
+}
+else{
+deleteArray(delNum,p);
+}
+break;
+case 5:
+sortArray();
+}
+}
+void dispArray(){
+int i;
+if(n==-1){
+printf(&quot;Array is empty&quot;);
+}
+else{
+for(i=0;i&lt;=n;i++){
+printf(&quot;%d\t&quot;,a[i]);
+}
+}
+}
+void main(){
+int ch,num,p,delNum;
+char c;
+do{
+printf(&quot;1.Insert\n2.DisplayArray\n3.SearchArray\n4.DeleteElement\n5.SortArray\nEnter your
+choice:&quot;);
+scanf(&quot;%d&quot;,&amp;ch);
+switch(ch){
+case 1:
+insertArray();
+break;
+case 2:
+dispArray();
+break;
+case 3:
+printf(&quot;Enter the number to be searched:&quot;);
+scanf(&quot;%d&quot;,&amp;num);
+p=searchArray(num);
+if(p==-1){
+printf(&quot;Element Not Found&quot;);
+}
+break;
+case 4:
+printf(&quot;Enter the element to be deleted:&quot;);
+scanf(&quot;%d&quot;,&amp;delNum);
+p=searchArray(delNum);
+if(p==-1){
+printf(&quot;Element Not Found&quot;);
+}
+else{
+deleteArray(delNum,p);
+}
+break;
+case 5:
+sortArray();
+}
