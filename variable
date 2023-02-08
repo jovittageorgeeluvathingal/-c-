@@ -1,0 +1,21 @@
+#include&lt;stdio.h&gt;
+int sum=0,a[5];          //Global Variable
+void disp(int size,int i){
+static int index=0;     //static variable
+for(i=0;i&lt;size;i++){
+printf(&quot;\nIndex =%d\t&quot;,index++);
+printf(&quot;\nValue =%d\t&quot;,a[i]);
+sum=sum+a[i];
+}
+printf(&quot;\nSum is : %d&quot;,sum);
+}
+void main(){
+int size;             //Local Variable
+register int i;       //Register variable
+printf(&quot;Enter the size of Array&quot;);
+scanf(&quot;%d&quot;,&amp;size);
+for(i=0;i&lt;size;i++){
+a[i]=i;
+}
+disp(size,i);
+}
