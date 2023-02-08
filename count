@@ -1,0 +1,27 @@
+#include&lt;stdio.h&gt;
+int a[10],i;
+void insertArray(){
+for(i=0;i&lt;10;i++){
+printf(&quot;Enter the Elements for A[%d]&quot;,i);
+scanf(&quot;%d&quot;,&amp;a[i]);
+}
+}
+void searchArray(){
+int n,count=0;
+printf(&quot;Enter the Element to be searched:&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+for(i=0;i&lt;10;i++){
+if(n==a[i]){
+printf(&quot;Element found at Position A[%d]\n&quot;,i);
+count++;
+}
+}
+if(count==0){
+printf(&quot;Element Not Found\n&quot;);
+}
+printf(&quot;Element %d is Occured %d times&quot;,n,count);
+}
+void main(){
+insertArray();
+searchArray();
+}
