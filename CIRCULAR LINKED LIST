@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node *next;
+};
+typedef struct node clist;
+clist *head=NULL;
+void insertion()
+{
+clist *t;
+if(head==NULL)
+{
+head=(clist*)malloc(sizeof(clist));
+printf("\nEnter the element to be inserted : ");
+scanf("%d",&head->data);
+head->next=head;
+}
+else
+{
+t=head;
+while(t->next!=head)
+{
+t=t->next;
+}
+t->next=(clist*)malloc(sizeof(clist));
+printf("\nEnter the element to be inserted : ");
+scanf("%d",&t->next->data);
+t->next->next=head;
+}
+}
+void deletion()
+{
+int ele;
+clist *t;
+printf("\nEnter the element to be deleted : ");
+scanf("%d",&ele);
+if(head==NULL)
+printf("\nCircular Linked List is Empty");
+else if(head->data==ele)
+{
+if(head->next==head)
+head=NULL;
+else
+{
+for(t=head; t->next!=head; t=t->next);
+t->next=head->next;
+head=head->next;
+}
+}
+else
+{
+for(t=head; t->next!=head && t->next->data!=ele; t=t->next);
+if(t->next==head)
+printf("\nElement not found");
+else
+{
+t->next=t->next->next;
+}
+}
+}
+void display()
+{
+printf("\n");
+clist *t;
+t=head;
+if(t==NULL)
+printf("\nCircular List is Empty");
+else
+{
+do
+{
+printf("%d ",t->data);
+t=t->next;
+}while(t!=head);
+}
+}
+int main()
+{
+int ch;
+do
+{
+printf("\n1. Insertion");
+printf("\n2. Deletion");
+printf("\n3. Display");
+printf("\n4. Exit");
+printf("\nEnter your choice: ");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1 : insertion();
+break;
+case 2 : deletion();
+break;
+case 3 : display();
+break;
+case 4 : exit(0);
+break;
+
+default : printf("\nInvalid Choice\n");
+}
+}
+while(ch!=4);
+return 0;
+}
