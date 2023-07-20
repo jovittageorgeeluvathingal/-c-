@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main()
+{
+   char str[100],ch;
+   int i,j;
+   gets(str);
+   
+   for(i=0;str[i]!='\0';i++)
+   {
+   if((str[i]>'a'&&str[i]<='z')||(str[i]>'A'&&str[i]<='Z'))
+   {
+       for(j=i;str[j]!='\0';j++)
+       str[j]=str[j+1];
+   }
+    if((str[i]>'a'&&str[i]<='z')||(str[i]>'A'&&str[i]<='Z')) 
+   i--;
+   }
+   printf("%s",str);
